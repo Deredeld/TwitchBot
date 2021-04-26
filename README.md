@@ -1,7 +1,11 @@
-TwitchBot
-
-Setup:
+TwitchBot  
+=
+Setup
+```
 pipenv install
+```
 
-To run:
+To run:  
+```
 pipenv run python God.py
+```
