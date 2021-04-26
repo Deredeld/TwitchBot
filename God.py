@@ -2,7 +2,12 @@
 import os # for importing env vars for the bot to use
 from twitchio.ext import commands
 import random
-import Classes.User
+from Classes.User import User
+
+
+import asyncio
+import nest_asyncio
+nest_asyncio.apply()
 
 bot = commands.Bot(
     # set up the bot
@@ -42,10 +47,20 @@ async def yesno(ctx):
 	await ctx.send(random.choice(["Yes","No"]))
 
 @bot.command(name='play')
-async def yesno(ctx):
+async def play(ctx):
 	print(ctx.author.id)
 	User(ctx.author.id,ctx.author.name)
 	await ctx.send("Registered")
+
+
+@bot.command(name='mine')
+async def mine(ctx):
+	print(ctx.author.name + " mines")
+	#Set or Get User
+	u = User(ctx.author.id,ctx.author.name)
+	u.StartMine()
+	await ctx.send("Finished Mining")
+
 
 if __name__ == "__main__":
     bot.run()
